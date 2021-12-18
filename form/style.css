@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body
+{
+   background: #a76bcf;
+   font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+object{
+    height: 24px;
+    width: 24px;
+    margin-top:5px;
+    margin-right:5px;
+}
+nav
+{
+    background: #9966cc;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+    display: flex;
+}
+nav ul li{
+    line-height: 30px;
+    margin: 0 5px;
+}
+nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    display: flex;
+}
+.title
+{
+    text-align: center;
+    height: 55px;
+    font-size: 12px;
+    background: #F0F0F0;
+    padding: 10px;
+    opacity: .8;
+
+}
+label{
+    display: block;
+}
+#button{
+    padding: 10px;
+    width: 200px;
+    color: white;
+    background-color:#9966cc;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.box
+{
+    background-color: #ffffff;
+    margin: auto;
+    width: 400px;
+    border: none;
+}
+.box_form{
+    padding: 20px;
+}
+input[type=email],[type=password],[type=text]{
+    height: 25px;
+    border-radius: 5px;
+    padding: 4px;
+    border: solid thin #aaa;
+    width: 100%;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+.error{
+    color:red;
+    width: 100%;
+    margin-top: 10px;
+    display: inline;
+}
+
+.msg{
+    color: #ec3838;
+}
+.none{
+    display: none;
+}
+.msg-succes{
+    color: #09A24CFF;
+}

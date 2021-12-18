@@ -1,0 +1,121 @@
+*
+{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+
+}
+.error{
+    color:red;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.wrapper{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0 20px;
+}
+form{
+    max-width: 550px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.8);
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.13);
+}
+.input-fields{
+    display: flex;
+    flex-direction: column;
+    margin-right: 4%;
+}
+.input-fields,
+.msg{
+    width: 48%;
+}
+.input-fields .input,
+.msg textarea{
+    margin: 10px 0;
+    background: transparent;
+    border:0;
+    border-bottom: 2px solid #a76bcf;
+    padding: 10px;
+    color: #a76bcf;
+    width: 100%;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+.msg textarea{
+    height: 162px;
+}
+
+input[type=submit], button{
+    background: #9966cc;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 600px){
+    form{
+        flex-direction: column;
+    }
+    .msg textarea{
+        height: 80px;
+    }
+    .input-fields,
+    .msg{
+        width: 100%;
+    }
+}
+
+object{
+    height: 24px;
+    width: 24px;
+    margin-top:5px;
+    margin-right:5px;
+}
+nav
+{
+    background: #9966cc;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+    display: flex;
+}
+nav ul li{
+    line-height: 30px;
+    margin: 0 5px;
+    list-style-type: none;
+}
+nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    display: flex;
+}
+.none{
+    display: none;
+}
