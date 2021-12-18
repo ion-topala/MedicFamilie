@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo json_encode($response);
     }
     else{
-        if($username === '' || !filter_var($username, FILTER_VALIDATE_EMAIL)){
+        if($username === '' || strlen($username) != 13){
             $error_fields[] = 'username';
         }
         if ($password === '' || strlen($password) < 8 || strongPassword($password)){

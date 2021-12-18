@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     $username = mysqli_real_escape_string($con, $username);
     $error_fields = [];
 
-    if($username === '' || !filter_var($username, FILTER_VALIDATE_EMAIL)){
+    if($username === '' || strlen($username) != 13){
         $error_fields[] = 'username';
     }
     if ($password === '' || strlen($password) < 8 || strongPassword($password)){

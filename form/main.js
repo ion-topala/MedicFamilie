@@ -10,12 +10,18 @@ $(function (){
           && /\W/.test(value);
    }, 'Your password must be at least 8 characters long and contain at least one number, uppercase and lowercase char.')
 
+   $.validator.addMethod("exactlength", function(value, element, param) {
+      return this.optional(element) || value.length == param;
+   }, $.validator.format("Please enter exactly 13 digits without spaces"));
+
    $("#login-form").validate({
       rules:{
          username:
              {
                 required: true,
-                email:true
+                exactlength: 13,
+                nowhitespace: true,
+                digits: true
              },
          password: {
             required: true,
@@ -24,8 +30,7 @@ $(function (){
       },
       messages:{
          username: {
-            required: 'Please enter an email address.',
-            email: 'Please enter a <em>valid</em> email address.'
+            required: 'Please enter your IDNP'
          }
       }
    })
@@ -74,12 +79,18 @@ $(function (){
           && /\W/.test(value);
    }, 'Your password must be at least 8 characters long and contain at least one number, uppercase and lowercase char.')
 
+   $.validator.addMethod("exactlength", function(value, element, param) {
+      return this.optional(element) || value.length == param;
+   }, $.validator.format("Please enter exactly 13 digits without spaces"));
+
    $("#register-form").validate({
       rules:{
          username:
              {
                 required: true,
-                email:true
+                exactlength: 13,
+                nowhitespace: true,
+                digits: true
              },
          password: {
             required: true,
@@ -102,8 +113,7 @@ $(function (){
       },
       messages:{
          username: {
-            required: 'Please enter an email address.',
-            email: 'Please enter a <em>valid</em> email address.'
+            required: 'Please enter your IDNP'
          }
       }
    })

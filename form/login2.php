@@ -21,8 +21,8 @@ include "nav_form.php";
             <h1>LogIn</h1>
         </div>
         <div class="box_form">
-            <label>Username</label>
-            <input tabindex="1" placeholder="Email" type="email" name="username"><br><br>
+            <label>IDNP</label>
+            <input tabindex="1" placeholder="IDNP" type="text" name="username"><br><br>
             <label>Password</label>
             <input tabindex="2" id="password" placeholder="Password" type="password" name="password"><br><br>
             <button tabindex="3" id="button" type="submit" class="login_btn"">Log in</button><br><br>
