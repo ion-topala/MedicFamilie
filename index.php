@@ -36,6 +36,8 @@ include "navbar_gen.php";
             </div>
             <div class="content-container">
                 <h2>Medici</h2>
+                <a>Graficul medicilor</a><br>
+                <a>Medicul de Garda</a>
             </div>
         </div>
         <div class="container">
@@ -47,6 +49,7 @@ include "navbar_gen.php";
             </div>
             <div class="content-container">
                 <h2>Medici</h2>
+
             </div>
         </div>
     </div>

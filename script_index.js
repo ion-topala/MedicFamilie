@@ -1,4 +1,4 @@
-const header = document.getElementById('header')
+const header = document.getElementById('header');
 const toggle = document.getElementById('toggle');
 const navbar = document.getElementById('navbar');
 
@@ -13,10 +13,15 @@ toggle.onclick = function (){
     navbar.classList.toggle('active');
 }
 
-document.getElementById('button').addEventListener('click', function (){
+const button = document.getElementById('button');
+const close = document.querySelector('.close');
+
+
+button.addEventListener('click', function (){
     document.querySelector('.bg-modal').style.display = 'flex';
 });
 
-document.querySelector('.close').addEventListener('click', function (){
+close.addEventListener('click', function (){
    document.querySelector('.bg-modal').style.display = 'none';
 });
+
