@@ -8,11 +8,12 @@
 <head>
     <title>Contact Us</title>
     <link rel="stylesheet" href="contact_style.css">
+    <link rel="stylesheet" href="../style_index.css">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
 </head>
 <body>
 <?php
-include "nav_form.php";
+include "../navbar_gen.php";
 ?>
 <div class="wrapper">
     <form id="contact-form">
@@ -33,5 +34,6 @@ include "nav_form.php";
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
 <script src="contact_validation.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../script_index.js"></script>
 </body>
 </html>
