@@ -31,19 +31,6 @@ $user_data = check_login($con);
 include "navbar_gen.php";
 ?>
 
-
-<!-- Swiper -->
-<div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/doctor1.png" height="1020px"></img></div>
-        <div class="swiper-slide"><img src="img/doctor2.png"></img></div>
-        <div class="swiper-slide"><img src="img/doctor3.png"></img></div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-</div>
-
 <div class="bg-modal">
     <div class="modal-content">
         <div class="close">+</div>
@@ -84,6 +71,21 @@ include "navbar_gen.php";
     </div>
 </div>
 
+<!-- Swiper -->
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="img/doctor1.png" alt="Man Doctor"></div>
+        <div class="swiper-slide"><img src="img/doctor2.png" alt="Two young doctors"></div>
+        <div class="swiper-slide"><img src="img/doctor3.png" alt="Woman Doctor"></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div class="services">
+
+</div>
 
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

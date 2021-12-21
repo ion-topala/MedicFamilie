@@ -205,6 +205,11 @@ header {
     height: auto;
     object-fit: cover;
 }
+.services{
+    height: 500px;
+    width: auto;
+    background-color: #008285;
+}
 
 @media screen and (max-width: 952px) {
     #navbar {
