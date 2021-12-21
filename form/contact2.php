@@ -1,8 +1,4 @@
 
-<?php
-//session_start();
-//?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +30,6 @@ include "../navbar_gen.php";
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
 <script src="contact_validation.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../script_index.js"></script>
+<script src="http://localhost/MedicFamilie/script_index.js"></script>
 </body>
 </html>

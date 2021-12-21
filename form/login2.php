@@ -7,13 +7,14 @@ session_start();
 <head>
     <title>LogIn</title>
     <link rel="stylesheet" href="style_forms.css">
+    <link rel="stylesheet" href="../style_index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
 </head>
 <body>
 <?php
-include "nav_form.php";
+include "../navbar_gen.php";
 ?>
 <div class="box">
     <form id="login-form">
@@ -42,6 +43,7 @@ include "nav_form.php";
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
 <script src="main.js"></script>
+<script src="http://localhost/MedicFamilie/script_index.js"></script>
 </body>
 </html>
 

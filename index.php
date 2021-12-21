@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 include ("form/connection.php");
 include ("form/functions.php");
 $user_data = check_login($con);
@@ -13,7 +16,7 @@ $user_data = check_login($con);
             name="viewport"
             content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
     />
-    <link href="style_index.css" rel="stylesheet">
+    <link href="http://localhost/MedicFamilie/style_index.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
@@ -84,6 +87,6 @@ include "navbar_gen.php";
 
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="script_index.js"></script>
+<script src="http://localhost/MedicFamilie/script_index.js"></script>
 </body>
 </html>
