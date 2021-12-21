@@ -15,7 +15,7 @@ if(!isset($_SESSION))
 </head>
 <body>
 <header id="header">
-    <a href="http://localhost/MedicFamilie/index.php" class="logo">Medic de Familie</a>
+    <a href="http://localhost/MedicFamilie/index.php" class="logo">Family doctor</a>
     <div id="toggle"></div>
     <div id="navbar">
         <ul>

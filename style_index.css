@@ -17,7 +17,8 @@ header {
     justify-content: space-between;
     width: 100%;
     background: #fff;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 25px
+    rgba(0, 0, 0, 0.05);
     z-index: 1000;
 }
 
@@ -206,9 +207,75 @@ header {
     object-fit: cover;
 }
 .services{
-    height: 500px;
+    margin-top: 100px;
+    padding: 50px;
+    height: 700px;
     width: auto;
-    background-color: #008285;
+    background: #00a2a4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    color:#FFF;
+}
+.services-container{
+    width: 45%;
+    height: 50%;
+    margin: 0 20px 10px 20px;
+    position: relative;
+}
+.number{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color:  rgba(0,162,164,0.6) ;
+}
+.text{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0,0,0,0.4);
+    bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.services-container a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+    background-color: rgba(0,0,0,0);
+}
+.images{
+    background-repeat:no-repeat;
+    background-position: center 30%;
+    font-family:Arial, Helvetica, sans-serif;
+    min-height:auto;
+}
+#box1{
+    background-image: url("img/appointment.jpg");
+
+}
+#box2{
+    background-image: url("img/doctor-appointment.jpg");
+}
+#box3{
+    background-image: url("img/Doc_and_patient.png");
+
+}
+#box4{
+    background-image: url("img/desease.jpg");
+    background-position: center 30%;
 }
 
 @media screen and (max-width: 952px) {

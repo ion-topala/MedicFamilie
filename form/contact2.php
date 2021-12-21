@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +10,45 @@
 <?php
 include "../navbar_gen.php";
 ?>
+<div class="bg-modal">
+    <div class="modal-content">
+        <div class="close">+</div>
+        <div class="container">
+            <div class="content-container">
+                <h2>Pacienti</h2>
+                <a href="#">Graficul medicilor</a><br>
+                <a href="#">Medicul de Garda</a>
+            </div>
+            <div class="content-container">
+                <h2>Medicamente</h2>
+                <a href="#">Graficul medicilor</a><br>
+                <a href="#">Medicul de Garda</a>
+            </div>
+            <div class="content-container">
+                <h2>Medici</h2>
+                <a href="#">Graficul medicilor</a><br>
+                <a href="#">Medicul de Garda</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="content-container">
+                <h2>Pacienti</h2>
+                <a href="#">Graficul medicilor</a><br>
+                <a href="#">Medicul de Garda</a>
+            </div>
+            <div class="content-container">
+                <h2>Medicamente</h2>
+                <a href="#">Graficul medicilor</a><br>
+                <a href="#">Medicul de Garda</a>
+            </div>
+            <div class="content-container">
+                <h2>Medici</h2>
+                <a href="#">Graficul medicilor</a><br>
+                <a href="#">Medicul de Garda</a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="wrapper">
     <form id="contact-form">
         <div class="input-fields">

@@ -11,7 +11,7 @@ $user_data = check_login($con);
 
 <html lang="en">
 <head>
-    <title>Medic de familie</title>
+    <title>Family doctor</title>
     <meta
             name="viewport"
             content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
@@ -84,6 +84,26 @@ include "navbar_gen.php";
 </div>
 
 <div class="services">
+    <div id="box1" class="services-container images">
+        <div class="number">1</div>
+        <div class="text">Appointments</div>
+        <a href="#"></a>
+    </div>
+    <div id="box2" class="services-container images">
+        <div class="number">2</div>
+        <div class="text">About Doctors</div>
+        <a href="#"></a>
+    </div>
+    <div id="box3" class="services-container images">
+        <div class="number">3</div>
+        <div class="text">About Patients</div>
+        <a href="#"></a>
+    </div>
+    <div id="box4" class="services-container images">
+        <div class="number">4</div>
+        <div class="text">Diseases</div>
+        <a href="#"></a>
+    </div>
 
 </div>
 
