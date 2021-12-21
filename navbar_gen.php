@@ -11,6 +11,9 @@ if(!isset($_SESSION))
 
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
     <link href="http://localhost/MedicFamilie/style_index.css" rel="stylesheet">
 </head>
 <body>

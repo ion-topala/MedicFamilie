@@ -12,7 +12,9 @@ $user_data = check_login($con);
 <html lang="en">
 <head>
     <title>Family doctor</title>
+
     <meta
+            charset="utf-8"
             name="viewport"
             content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
     />
