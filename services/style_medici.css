@@ -4,3 +4,32 @@ table{
 td, tr{
     padding: 10px;
 }
+tr{
+    background-color: rgba(0,0,0,0.1);
+}
+th{
+   background-color: #008285;
+    color: #FFFFFF;
+    padding: 5px;
+}
+.create
+{
+    background: #00a2a4;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    display: block;
+    margin: 10px auto auto auto;
+}
+.search-box{
+    position: absolute;
+    padding: 10px;
+    top: 100px;
+    right: 30px;
+    display: flex;
+    border: 2px solid #008285 ;
+}

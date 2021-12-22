@@ -4,34 +4,79 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-include ("form/connection.php");
-include ("form/functions.php");
+include ("../form/connection.php");
+include ("../form/functions.php");
 $user_data = check_login($con);
+
+if (isset($_POST['date'])) {
+    $date = clearString($_POST['date']);
+    $result = mysqli_query($con, "SELECT nume_medic, prenume_medic, ziua_garda FROM medic_garda INNER JOIN lista_medici ON medic_id = id_medic where ziua_garda ='$date';");
+    $result = mysqli_fetch_all($result);
+}
+else{
+    $result = (array) null;
+}
+
+
 ?>
 
-<html lang="en">
+<html>
 <head>
-    <title>Family doctor</title>
-
-    <meta
-            charset="utf-8"
-            name="viewport"
-            content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
-    />
-    <link href="http://localhost/MedicFamilie/style_index.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
-    <!-- Link Swiper's CSS -->
-    <link
-            rel="stylesheet"
-            href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
+    <link href="http://localhost/MedicFamilie/style_index.css" rel="stylesheet">
+    <link href="http://localhost/MedicFamilie/services/style_medici.css" rel="stylesheet">
+    <title>Filtrarea dupa ziua de Garda</title>
+    <script>
+        function changeText(a){
+            document.getElementById("alert-text").innerHTML = a;
+        }
+    </script>
 </head>
 <body>
 <?php
-include "navbar_gen.php";
+include "../navbar_gen.php";
 ?>
+<div class="search-box">
+<!--    <h1 id="alert-text"></h1>-->
+    <!--Cautarea dupa data-->
+    <form id="myForm" method="post" class="hidden" action="medici_filtreZiGarda.php">
+        <p>Ziua de garda</p>
+        <input type="date" id="theDate" name="date" value="">
+        <button type="submit" class="create">Submit</button>
+    </form>
+</div>
+
+<table>
+    <?php
+    if (!empty($result)){?>
+        <caption><h2>Persoana responsabila</h2><br></caption>
+        <tr>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Ziua</th>
+        </tr>
+        <?php
+    }
+    else{
+        echo '<script type="text/javascript">changeText("Introduceti filtrele de cautare");</script>';
+    }
+    ?>
+    <?php
+    if (!empty($result)){
+        foreach ($result as $result){
+            ?>
+            <tr>
+                <td><?= $result[0] ?></td>
+                <td><?= $result[1] ?></td>
+                <td><?= $result[2] ?></td>
+            </tr>
+            <?php
+        }
+    }
+    ?>
+</table>
 
 <div class="bg-modal">
     <div class="modal-content">
@@ -75,44 +120,14 @@ include "navbar_gen.php";
     </div>
 </div>
 
-<!-- Swiper -->
-<div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/doctor1.png" alt="Man Doctor"></div>
-        <div class="swiper-slide"><img src="img/doctor2.png" alt="Two young doctors"></div>
-        <div class="swiper-slide"><img src="img/doctor3.png" alt="Woman Doctor"></div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-</div>
 
-<div class="services">
-    <div id="box1" class="services-container images">
-        <div class="number">1</div>
-        <div class="text">Appointments</div>
-        <a href="#"></a>
-    </div>
-    <div id="box2" class="services-container images">
-        <div class="number">2</div>
-        <div class="text">About Doctors</div>
-        <a href="http://localhost/MedicFamilie/services/medici.php" target="_blank"></a>
-    </div>
-    <div id="box3" class="services-container images">
-        <div class="number">3</div>
-        <div class="text">About Patients</div>
-        <a href="#"></a>
-    </div>
-    <div id="box4" class="services-container images">
-        <div class="number">4</div>
-        <div class="text">Diseases</div>
-        <a href="#"></a>
-    </div>
-
-</div>
-
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="http://localhost/MedicFamilie/script_index.js"></script>
+<script>
+    function showDiv(divId, element)
+    {
+        document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
+    }
+</script>
 </body>
 </html>
+
