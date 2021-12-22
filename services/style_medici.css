@@ -30,6 +30,8 @@ th{
     padding: 10px;
     top: 100px;
     right: 30px;
-    display: flex;
     border: 2px solid #008285 ;
+}
+.hide{
+    display: none;
 }
