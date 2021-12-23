@@ -8,21 +8,58 @@ include ("../form/connection.php");
 include ("../form/functions.php");
 $user_data = check_login($con);
 
-if (isset($_POST['tableBoala'])) {
+if (isset($_POST['tableBoala']) && isset($_POST['denBoala'])) {
     $tableBoala = clearString($_POST['tableBoala']);
-    $result = mysqli_query($con, "SELECT * FROM $tableBoala where 1;");
+    $denBoala = clearString($_POST['denBoala']);
+
+    $result = mysqli_query($con, "SELECT nume_pacient, prenume_pacient, IDNP_pacient, den_boala
+        FROM pacienti_afectiuni_sezon 
+        INNER JOIN afectiuni_sezon
+          ON boala_id = id_boala
+        INNER JOIN lista_pacienti
+          ON pacient_id = id_pacient WHERE boala_id = 2;");
     $result = mysqli_fetch_all($result);
+    // sa adaug if
 }
 else{
     $result = (array) null;
 }
 
-$sql = "SELECT DISTINCT id_pacient, nume_pacient, prenume_pacient FROM lista_pacienti";
+$sql = "SELECT DISTINCT * FROM afectiuni_sezon";
 $res = mysqli_query($con,$sql);
 $options = '';
 
 while ($row = mysqli_fetch_array($res)){
-    $options = $options."<option value=\"$row[0]\">$row[1] $row[2]</option>";
+    $options = $options."<option value=\"$row[0]\">$row[1]</option>";
+}
+
+$sql = "SELECT DISTINCT * FROM boli_cronice";
+$res = mysqli_query($con,$sql);
+$options2 = '';
+
+while ($row2 = mysqli_fetch_array($res)){
+    $options2 = $options2."<option value=\"$row2[0]\">$row2[1]</option>";
+}
+$sql = "SELECT DISTINCT * FROM boli_genetice";
+$res = mysqli_query($con,$sql);
+$options3 = '';
+
+while ($row3 = mysqli_fetch_array($res)){
+    $options3 = $options3."<option value=\"$row3[0]\">$row3[1]</option>";
+}
+$sql = "SELECT DISTINCT * FROM boli_infectioase";
+$res = mysqli_query($con,$sql);
+$options4 = '';
+
+while ($row4 = mysqli_fetch_array($res)){
+    $options4 = $options4."<option value=\"$row4[0]\">$row4[1]</option>";
+}
+$sql = "SELECT DISTINCT * FROM lista_restboli";
+$res = mysqli_query($con,$sql);
+$options5 = '';
+
+while ($row5 = mysqli_fetch_array($res)){
+    $options5 = $options5."<option value=\"$row5[0]\">$row5[1]</option>";
 }
 
 ?>
@@ -48,7 +85,7 @@ include "../navbar_gen.php";
 
 <div class="search-box">
     <!--    <h1 id="alert-text"></h1>-->
-    <form id="myFormGrad" method="post" action="boli.php">
+    <form id="myFormGrad" method="post" action="boli_pacienti.php">
         <p>Lista bolilor</p>
         <select id="select1" name="tableBoala">
             <option value="">Select...</option>
@@ -60,23 +97,32 @@ include "../navbar_gen.php";
         </select>
         <select id="select2" name="denBoala">
             <option value="">Select...</option>
-            <option value="aaa">aaa</option>
+            <?php
+            echo $options;
+            ?>
         </select>
         <select id="select3" name="denBoala">
             <option value="">Select...</option>
-            <option value="">bbb</option>
+            <?php
+            echo $options2;
+            ?>
         </select>
         <select id="select4" name="denBoala">
             <option value="">Select...</option>
-            <option value="">ccc</option>
+            <?php
+            echo $options3;
+            ?>
         </select>
         <select id="select5" name="denBoala">
             <option value="">Select...</option>
-            <option value="">dd</option>
+            <?php
+            echo $options4;
+            ?>
         </select>
         <select id="select6" name="denBoala">
-            <option value="">Select...</option>
-            <option value="">eee</option>
+            <?php
+            echo $options5;
+            ?>
         </select>
         <button type="submit" class="create">Submit</button>
     </form>
@@ -120,9 +166,45 @@ include "../navbar_gen.php";
     $("#select1").change(function(){
         if($(this).val() == "afectiuni_sezon"){
             $("#select2").show();
+            $("#select3").hide();
+            $("#select4").hide();
+            $("#select5").hide();
+            $("#select6").hide();
+        }
+        else if ($(this).val() == "boli_cronice"){
+            $("#select2").hide();
+            $("#select3").show();
+            $("#select4").hide();
+            $("#select5").hide();
+            $("#select6").hide();
+        }
+        else if ($(this).val() == "boli_genetice"){
+            $("#select2").hide();
+            $("#select3").hide();
+            $("#select4").show();
+            $("#select5").hide();
+            $("#select6").hide();
+        }
+        else if ($(this).val() == "boli_infectioase"){
+            $("#select2").hide();
+            $("#select3").hide();
+            $("#select4").hide();
+            $("#select5").show();
+            $("#select6").hide();
+        }
+        else if ($(this).val() == "lista_restboli"){
+            $("#select2").hide();
+            $("#select3").hide();
+            $("#select4").hide();
+            $("#select5").hide();
+            $("#select6").show();
         }
         else{
             $("#select2").hide();
+            $("#select3").hide();
+            $("#select4").hide();
+            $("#select5").hide();
+            $("#select6").hide();
         }
 
     });
