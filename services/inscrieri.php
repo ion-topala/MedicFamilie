@@ -8,15 +8,42 @@ include ("../form/connection.php");
 include ("../form/functions.php");
 $user_data = check_login($con);
 
+$sql = "SELECT DISTINCT id_pacient, nume_pacient, prenume_pacient FROM lista_pacienti";
+$res = mysqli_query($con,$sql);
+$options = '';
+
+while ($row = mysqli_fetch_array($res)){
+    $options = $options."<option value=\"$row[0]\">$row[1] $row[2]</option>";
+}
+
+$sql = "SELECT DISTINCT id_medic, nume_medic, prenume_medic FROM lista_medici";
+$res = mysqli_query($con,$sql);
+$options2 = '';
+
+while ($row2 = mysqli_fetch_array($res)){
+    $options2 = $options2."<option value=\"$row2[0]\">$row2[1] $row2[2]</option>";
+}
+
+
 if (isset($_POST['meeting-time'])) {
     $meetingTime = clearString($_POST['meeting-time']);
-    $result = mysqli_query($con, "SELECT nume_pacient, prenume_pacient, IDNP_pacient, nume_medic, prenume_medic, timpul_inscrierii
-FROM inscriere
-INNER JOIN lista_pacienti
-      ON pacient_id = id_pacient
-INNER JOIN lista_medici
-      ON inscriere.medic_id = id_medic;");
-    $result = mysqli_fetch_all($result);
+    if ($meetingTime != "all") {
+        $result = mysqli_query($con, "SELECT DISTINCT nume_pacient, prenume_pacient, IDNP_pacient, nume_medic, prenume_medic, timpul_inscrierii
+            FROM inscriere
+            INNER JOIN lista_pacienti
+                ON pacient_id = id_pacient
+            INNER JOIN lista_medici
+                ON inscriere.medic_id = id_medic where timpul_inscrierii = '$meetingTime';");
+        $result = mysqli_fetch_all($result);
+    }else{
+        $result = mysqli_query($con, "SELECT DISTINCT nume_pacient, prenume_pacient, IDNP_pacient, nume_medic, prenume_medic, timpul_inscrierii
+            FROM inscriere
+            INNER JOIN lista_pacienti
+                ON pacient_id = id_pacient
+            INNER JOIN lista_medici
+                ON inscriere.medic_id = id_medic;");
+        $result = mysqli_fetch_all($result);
+    }
 }
 else{
     $result = (array) null;
@@ -49,10 +76,15 @@ include "../navbar_gen.php";
 
     <!--Cautarea dupa data-->
     <form id="myForm" method="post" action="inscrieri.php">
-        <p>Data inscrierii</p>
+        <p>Cautarea dupa data:</p>
         <input type="datetime-local" id="meeting-time"
                name="meeting-time" value=""
                min="2020-01-07T00:00" max="2021-12-31T00:00">
+        <button type="submit" class="create">Submit</button>
+    </form>
+    <form id="myForm" method="post" action="inscrieri.php">
+        <input type="hidden" name="meeting-time" value="all">
+        <p>Afisarea tuturor inscrierilor</p>
         <button type="submit" class="create">Submit</button>
     </form>
 </div>
@@ -60,17 +92,15 @@ include "../navbar_gen.php";
 <table>
     <?php
     if (!empty($result)){?>
-        <caption><h2>Datele despre medici dupa data nasterii</h2><br></caption>
+        <caption><h2>Inscrierile</h2><br></caption>
         <tr>
-            <th>ID</th>
             <th>Nume</th>
             <th>Prenume</th>
             <th>IDNP</th>
-            <th>Data nasterii</th>
-            <th>Orasul</th>
-            <th>Strada</th>
-            <th>Blocul</th>
-            <th>Apartamentul</th>
+            <th>Nume Medic</th>
+            <th>Prenume Medic</th>
+            <th>Timpul inscrierii</th>
+
         </tr>
         <?php
     }
@@ -89,65 +119,38 @@ include "../navbar_gen.php";
                 <td><?= $result[3] ?></td>
                 <td><?= $result[4] ?></td>
                 <td><?= $result[5] ?></td>
-                <td><?= $result[6] ?></td>
-                <td><?= $result[7] ?></td>
-                <td><?= $result[8] ?></td>
             </tr>
             <?php
         }
     }
     ?>
 </table>
-<div class="bg-modal">
-    <div class="modal-content">
-        <div class="close">+</div>
-        <div class="container">
-            <div class="content-container">
-                <h2>Pacienti</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
-            </div>
-            <div class="content-container">
-                <h2>Medicamente</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
-            </div>
-            <div class="content-container">
-                <h2>Medici</h2>
-                <a href="http://localhost/MedicFamilie/services/medici.php" target="_blank">Lista medicilor</a><br>
-                <a href="http://localhost/MedicFamilie/services/medici_filtre_date.php" target="_blank">Gasirea dupa ziua<br> de nastere</a><br>
-                <a href="http://localhost/MedicFamilie/services/medici_filtreZiGarda.php" target="_blank">Ziua de garda</a><br>
-                <a href="http://localhost/MedicFamilie/services/medici_filtre_grad.php" target="_blank">Grad profesional</a>
-            </div>
-        </div>
-        <div class="container">
-            <div class="content-container">
-                <h2>Pacienti</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
-            </div>
-            <div class="content-container">
-                <h2>Medicamente</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
-            </div>
-            <div class="content-container">
-                <h2>Medici</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
-            </div>
-        </div>
-    </div>
+
+<div style="position:absolute;">
+    <form method="post" action="create_inscrieri.php">
+        <p>Nume Pacient</p>
+        <select name="numeP">
+            <?php
+            echo $options;
+            ?>
+        </select>
+        <p>Nume Medic</p>
+        <select name="numeM">
+            <?php
+            echo $options2;
+            ?>
+        </select>
+        <p>Ziua inscrierii</p>
+        <input type="datetime-local" id="meeting-time"
+               name="app-time" value=""
+               min="2020-12-01T00:00" max="2022-12-31T00:00">
+        <button type="submit" class="create">Submit</button>
+    </form>
 </div>
 
 
 <script src="http://localhost/MedicFamilie/script_index.js"></script>
-<script>
-    function showDiv(divId, element)
-    {
-        document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
-    }
-</script>
+
 </body>
 </html>
 

@@ -39,8 +39,11 @@ include "navbar_gen.php";
         <div class="container">
             <div class="content-container">
                 <h2>Pacienti</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
+                <a href="#">Date pacienti</a><br>
+                <a href="#">Pacienti cu polita</a><br>
+                <a href="#">Pacienti cu vaccin</a><br>
+                <a href="">Istoria medicala</a><br>
+                <a href="">Inscrierile</a><br>
             </div>
             <div class="content-container">
                 <h2>Medicamente</h2>
@@ -49,7 +52,7 @@ include "navbar_gen.php";
             </div>
             <div class="content-container">
                 <h2>Medici</h2>
-                <a href="http://localhost/MedicFamilie/services/medici.php" target="_blank">Lista medicilor</a><br>
+                    <a href="http://localhost/MedicFamilie/services/medici.php" target="_blank">Lista medicilor</a><br>
                 <a href="http://localhost/MedicFamilie/services/medici_filtre_date.php" target="_blank">Gasirea dupa ziua<br> de nastere</a><br>
                 <a href="http://localhost/MedicFamilie/services/medici_filtreZiGarda.php" target="_blank">Ziua de garda</a><br>
                 <a href="http://localhost/MedicFamilie/services/medici_filtre_grad.php" target="_blank">Grad profesional</a>

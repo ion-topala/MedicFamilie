@@ -35,3 +35,7 @@ th{
 .hide{
     display: none;
 }
+#select2, #select3, #select4, #select5, #select6
+{
+    display: none;
+}
