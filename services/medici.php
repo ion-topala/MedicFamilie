@@ -78,7 +78,7 @@ include "../navbar_gen.php";
 </select>
 <script src="http://localhost/MedicFamilie/script_index.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="services_script.js"></script>
+<script src="medici_script.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
