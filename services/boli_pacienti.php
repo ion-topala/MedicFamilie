@@ -8,16 +8,25 @@ include ("../form/connection.php");
 include ("../form/functions.php");
 $user_data = check_login($con);
 
+$array = array(
+    "afectiuni_sezon" => "pacienti_afectiuni_sezon",
+    "boli_cronice" => "pacienti_boli_cronice",
+    "boli_genetice" => "pacienti_boli_genetice",
+    "boli_infectioase" => "pacienti_boli_infect",
+    "lista_restboli" => "pacienti_restboli",
+);
+
 if (isset($_POST['tableBoala']) && isset($_POST['denBoala'])) {
-    $tableBoala = clearString($_POST['tableBoala']);
-    $denBoala = clearString($_POST['denBoala']);
+    $tableBoala = $_POST['tableBoala'];
+    $denBoala = intval($_POST['denBoala'])  ;
 
     $result = mysqli_query($con, "SELECT nume_pacient, prenume_pacient, IDNP_pacient, den_boala
-        FROM pacienti_afectiuni_sezon 
-        INNER JOIN afectiuni_sezon
+        FROM $array[$tableBoala]
+        INNER JOIN $tableBoala
           ON boala_id = id_boala
         INNER JOIN lista_pacienti
-          ON pacient_id = id_pacient WHERE boala_id = 2;");
+          ON pacient_id = id_pacient WHERE boala_id = '$denBoala';");
+    print_r($denBoala);
     $result = mysqli_fetch_all($result);
     // sa adaug if
 }
@@ -80,8 +89,8 @@ while ($row5 = mysqli_fetch_array($res)){
 </head>
 <body>
 <?php
-include "../navbar_gen.php";
-?>
+//include "../navbar_gen.php";
+//?>
 
 <div class="search-box">
     <!--    <h1 id="alert-text"></h1>-->
@@ -120,6 +129,7 @@ include "../navbar_gen.php";
             ?>
         </select>
         <select id="select6" name="denBoala">
+            <option value="">Select...</option>
             <?php
             echo $options5;
             ?>
