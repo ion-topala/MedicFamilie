@@ -34,6 +34,14 @@ include "../navbar_gen.php";
     </form>
 </div>
 
+<div class="search-box" id="gardaBox">
+    <form id="gardaForm">
+        <p>Ziua de garda</p>
+        <input type="date" id="theDate" name="ziuaGarda" value="">
+        <button type="submit" class="create" id="gardaButton">Submit</button>
+    </form>
+</div>
+
 <table id="myTable">
     <caption><h1>Datele despre medici</h1><br></caption>
     <tr>
@@ -53,6 +61,13 @@ include "../navbar_gen.php";
         <th>ID</th>
         <th>Nume</th>
         <th>Prenume</th>
+    </tr>
+</table>
+<table id="ziuaGarda">
+    <tr>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Ziua</th>
     </tr>
 </table>
 <label for="forms">Cautare dupa</label>

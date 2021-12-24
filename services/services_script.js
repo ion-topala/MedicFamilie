@@ -90,6 +90,49 @@ $('#gradButton').click(function (e){
         });
     }
 });
+$('#gardaButton').click(function (e){
+    e.preventDefault();
+    var valueDate = document.getElementById('theDate').value;
+    if (!valueDate) {
+        Swal.fire('Necesar de selectat filtrele')
+    }
+    else {
+        $("#ziuaGarda").find("tr:gt(0)").remove();
+        let ziuaGarda = $('input[name="ziuaGarda"]').val();
+        $.ajax({
+            url: 'mediciPHP.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                ziuaGarda: ziuaGarda
+            },
+            success: function(data){
+                // here we populate data returned by controller
+                // if returned data is a plain array, then parse into javascript obj
+                var d = data;
+                // d = [{ name : 'john', phone : 123 }]; --> example
+                // this depend on your returned data from controller
+                var output;
+                $.each(d,function(i,e) {
+                    // here you structured the code depend on the table of yours
+                    output += '<tr>' +
+                        '<td>'+e[0]+'</td>' +
+                        '<td>'+e[1]+'</td>' +
+                        '<td>'+e[2]+'</td>' +
+                        '</tr>';
+                });
+
+                // after finish creating html structure, append the output
+                // into the table
+                $("#myTable").hide();
+                $("#gradTable").hide();
+                $('#ziuaGarda').show();
+                $('#ziuaGarda').append(output);
+            }
+        });
+    }
+});
+
 
 $(document).ready( function() {
     dateSearch = " ";
@@ -130,12 +173,19 @@ $(document).ready( function() {
 });
 
 $("#cars").change(function() {
-    if ($(this).val() == "date") {
+    if ($(this).val() === "date") {
         $("#dateBox").show();
         $("#gradBox").hide();
+        $("#gardaBox").hide();
     }
-    else{
+    else if ($(this).val() === "grad"){
         $("#dateBox").hide();
         $("#gradBox").show();
+        $("#gardaBox").hide();
+    }
+    else if($(this).val() === "ziuaGarda"){
+        $("#dateBox").hide();
+        $("#gradBox").hide();
+        $("#gardaBox").show();
     }
 });
