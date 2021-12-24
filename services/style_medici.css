@@ -39,3 +39,6 @@ th{
 {
     display: none;
 }
+.swal2-styled.swal2-confirm {
+    background-color: #008285 !important;
+}
