@@ -19,13 +19,18 @@ if(!isset($_SESSION))
 <?php
 include "../navbar_gen.php";
 ?>
-<div class="search-box">
-    <!--    <h1 id="alert-text"></h1>-->
-    <!--Cautarea dupa data-->
+<div class="search-box" id="dateBox">
     <form id="dateForm">
         <p>Data nasterii</p>
             <input type="date" id="dateSearch" name="dateSearch">
         <button type="submit" class="create" id="dateButton">Submit</button>
+    </form>
+</div>
+<div class="search-box" id="gradBox">
+    <form id="gradForm">
+        <p>Gradul profesional</p>
+        <input type="text" name="grad" id="grad">
+        <button type="submit" class="create" id="gradButton">Submit</button>
     </form>
 </div>
 
@@ -43,7 +48,19 @@ include "../navbar_gen.php";
         <th>Apartamentul</th>
     </tr>
 </table>
-<p id="textp" style="color: #ec3838"></p>
+<table id="gradTable">
+    <tr>
+        <th>ID</th>
+        <th>Nume</th>
+        <th>Prenume</th>
+    </tr>
+</table>
+<label for="forms">Cautare dupa</label>
+<select id="cars" name="forms" form="forms">
+    <option value="date">Dupa data nasterii</option>
+    <option value="grad">Dupa grad profesional</option>
+    <option value="ziuaGarda">Ziua de garda</option>
+</select>
 <script src="http://localhost/MedicFamilie/script_index.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="services_script.js"></script>
