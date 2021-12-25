@@ -32,13 +32,14 @@ th{
     right: 30px;
     border: 2px solid #008285 ;
 }
-.hide{
+.hide {
     display: none;
 }
-#select2, #select3, #select4, #select5, #select6
-{
-    display: none;
-}
+
+/*#select2*/
+/*{*/
+/*    display: none;*/
+/*}*/
 .swal2-styled.swal2-confirm {
     background-color: #008285 !important;
 }
@@ -60,5 +61,11 @@ th{
 }
 #vaccinTable{
     margin-top: 100px;
+    display: none;
+}
+#pacientiBolnavi{
+    display: none;
+}
+#pacientiBolnaviBox{
     display: none;
 }
