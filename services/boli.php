@@ -52,6 +52,16 @@ include "../navbar_gen.php";
         <button type="submit" class="create" id="pacientiBolnaviButton">Submit</button>
     </form>
 </div>
+<div class="search-box" id="autocompleteBox">
+<!--    Make sure the form has the autocomplete function switched off:-->
+    <form autocomplete="off" >
+        <div class="autocomplete" style="width:300px;">
+            <label>IDNP:</label>
+            <input class="input-auto input-text" id="myInput" type="text" name="myCountry" placeholder="Cautare dupa IDNP">
+        </div>
+        <button type="submit" class="create" id="istorieMedButton">Submit</button>
+    </form>
+</div>
 
 <table id="myTable">
     <caption><h3>Lista boli</h3><br></caption>
@@ -60,7 +70,16 @@ include "../navbar_gen.php";
         <th>Boala</th>
 </table>
 <table id="pacientiBolnavi">
-    <caption><h3>Lista boli</h3><br></caption>
+    <caption><h3>Pacienti Bolnavi</h3><br></caption>
+    <tr>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>IDNP</th>
+        <th>Boala</th>
+    <tr>
+</table>
+<table id="istoriaMedicalaTable">
+    <caption><h3>Istoria Medicala</h3><br></caption>
     <tr>
         <th>Nume</th>
         <th>Prenume</th>
@@ -77,10 +96,12 @@ include "../navbar_gen.php";
 </select>
 
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="http://localhost/MedicFamilie/script_index.js"></script>
-<script src="boli_script.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="boli_script.js"></script>
 </body>
 </html>
 

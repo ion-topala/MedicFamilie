@@ -59,13 +59,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['tableBoala']) && isset
         $options5 = $options5."<option value=\"$row5[0]\">$row5[1]</option>";
     }
 
+    $sql = "SELECT IDNP_pacient FROM istorie_medicala INNER JOIN lista_pacienti ON pacient_id = id_pacient;";
+    $istorieMedicala = mysqli_query($con, $sql);
+    $istorieMedicala = mysqli_fetch_all($istorieMedicala);
+
     $response = [
         "boli" => $result,
         "afectiuniSezon" => $options,
         "boliCronice" => $options2,
         "boliGenetice" => $options3,
         "boliInfectioase" => $options4,
-        "alteBoli" => $options5
+        "alteBoli" => $options5,
+        "pacientiIstorieMedicala" =>$istorieMedicala
     ];
 
 
@@ -101,6 +106,23 @@ elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['pacientiB']) && iss
 
     $response = [
         "pacientiBolnavi" => $result
+    ];
+    echo json_encode($response);
+    die;
+}
+elseif ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['myInput'])){
+    $myInput = $_POST['myInput'];
+    $pacientId = "SELECT DISTINCT id_pacient FROM lista_pacienti where IDNP_pacient ='$myInput';";
+    $result = mysqli_query($con, $pacientId);
+    $pacientId = mysqli_fetch_all($result);
+    $pacientId = $pacientId[0][0];
+
+    $sql = "SELECT nume_pacient, prenume_pacient, IDNP_pacient,den_boala  FROM istorie_medicala INNER JOIN lista_pacienti ON pacient_id = id_pacient where istorie_medicala.pacient_id = '$pacientId';";
+    $result = mysqli_query($con, $sql);
+    $result = mysqli_fetch_all($result);
+
+    $response = [
+      "pacientIstorie" => $result
     ];
     echo json_encode($response);
     die;
