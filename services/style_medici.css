@@ -121,3 +121,9 @@ th{
 #istoriaMedicalaTable{
     display: none;
 }
+#labelProducator, #producator, #producatorButton{
+    display: none;
+}
+#investigare{
+    display: none;
+}
