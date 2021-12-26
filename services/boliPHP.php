@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['tableBoala']) && isset
         $options5 = $options5."<option value=\"$row5[0]\">$row5[1]</option>";
     }
 
-    $sql = "SELECT IDNP_pacient FROM istorie_medicala INNER JOIN lista_pacienti ON pacient_id = id_pacient;";
+    $sql = "SELECT DISTINCT IDNP_pacient FROM istorie_medicala INNER JOIN lista_pacienti ON pacient_id = id_pacient;";
     $istorieMedicala = mysqli_query($con, $sql);
     $istorieMedicala = mysqli_fetch_all($istorieMedicala);
 
