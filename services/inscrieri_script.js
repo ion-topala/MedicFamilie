@@ -22,7 +22,7 @@ $(document).ready( function() {
                     '<td>'+e[4]+'</td>' +
                     '<td>'+e[5]+'</td>' +
                     '<td>'+e[6]+'</td>' +
-                    '<td><a href="delete.php?id='+e[0]+'">Delete</a></td>' +
+                    '<td><a style="color:#ec3838;" href="delete.php?id='+e[0]+'">Delete</a></td>' +
                     '</tr>';
             });
 
@@ -81,12 +81,13 @@ $("#showAll").click(function (e){
     var output;
     $.each(d,function(i,e) {
         output += '<tr>' +
-            '<td>'+e[0]+'</td>' +
             '<td>'+e[1]+'</td>' +
             '<td>'+e[2]+'</td>' +
             '<td>'+e[3]+'</td>' +
             '<td>'+e[4]+'</td>' +
             '<td>'+e[5]+'</td>' +
+            '<td>'+e[6]+'</td>' +
+            '<td><a style="color:#ec3838;" href="delete.php?id='+e[0]+'">Delete</a></td>' +
             '</tr>';
     });
     $("#inscrieriTable").find("tr:gt(0)").remove();

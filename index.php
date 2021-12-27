@@ -27,6 +27,11 @@ $user_data = check_login($con);
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="footer/css/ionicons.min.css">
+    <link rel="stylesheet" href="footer/css/style.css">
 </head>
 <body>
 <?php
@@ -38,41 +43,39 @@ include "navbar_gen.php";
         <div class="close">+</div>
         <div class="container">
             <div class="content-container">
-                <h2>Pacienti</h2>
-                <a href="#">Date pacienti</a><br>
-                <a href="#">Pacienti cu polita</a><br>
-                <a href="#">Pacienti cu vaccin</a><br>
-                <a href="">Istoria medicala</a><br>
-                <a href="">Inscrierile</a><br>
+                <a href="http://localhost/MedicFamilie/services/pacienti.php"><h2>Pacienti</h2></a>
+                <a aria-current="page">Lista pacientilor</a><br>
+                <a aria-current="page">Verificarea pacientilor cu vaccin</a><br>
+                <a aria-current="page">Verificare politei</a>
             </div>
             <div class="content-container">
-                <h2>Medicamente</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
+                <a href="http://localhost/MedicFamilie/services/medici.php"><h2>Medici</h2></a>
+                <a aria-current="page">Lista medicilor</a><br>
+                <a aria-current="page">Cautarea dupa filtre</a><br>
             </div>
             <div class="content-container">
-                <h2>Medici</h2>
-                    <a href="http://localhost/MedicFamilie/services/medici.php" target="_blank">Lista medicilor</a><br>
-                <a href="http://localhost/MedicFamilie/services/medici_filtre_date.php" target="_blank">Gasirea dupa ziua<br> de nastere</a><br>
-                <a href="http://localhost/MedicFamilie/services/medici_filtreZiGarda.php" target="_blank">Ziua de garda</a><br>
-                <a href="http://localhost/MedicFamilie/services/medici_filtre_grad.php" target="_blank">Grad profesional</a>
+                <a href="http://localhost/MedicFamilie/services/boli.php"><h2>Boli</h2></a>
+                <a aria-current="page">Lista pacientilor</a><br>
+                <a aria-current="page">Lista bolilor actuale</a><br>
+                <a aria-current="page">Inserarea in baza de date</a>
             </div>
         </div>
         <div class="container">
             <div class="content-container">
-                <h2>Pacienti</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
+                <a href="http://localhost/MedicFamilie/services/inscrieri.php"><h2>Inscrieri</h2></a>
+                <a aria-current="page">Cautarea inscrierilor</a><br>
+                <a aria-current="page">Adaugarea unei inscrieri in baza</a><br>
+                <a aria-current="page">Stergerea unei inscrieri</a>
             </div>
             <div class="content-container">
-                <h2>Medicamente</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
+                <a href="http://localhost/MedicFamilie/services/prescrieri.php"><h2>Prescrieri</h2></a>
+                <a aria-current="page">Lista prescrierilor</a><br>
+                <a aria-current="page">Inserare in baza de date</a><br>
             </div>
             <div class="content-container">
-                <h2>Medici</h2>
-                <a href="#">Graficul medicilor</a><br>
-                <a href="#">Medicul de Garda</a>
+                <a href="http://localhost/MedicFamilie/services/tratamente.php"><h2>Tratamente</h2></a>
+                <a aria-current="page">Cautare dupa filtre</a><br>
+                <a aria-current="page">Listele tratamentelor</a><br>
             </div>
         </div>
     </div>
@@ -94,26 +97,28 @@ include "navbar_gen.php";
     <div id="box1" class="services-container images">
         <div class="number">1</div>
         <div class="text">Appointments</div>
-        <a href="#"></a>
+        <a href="http://localhost/MedicFamilie/services/inscrieri.php"></a>
     </div>
     <div id="box2" class="services-container images">
         <div class="number">2</div>
         <div class="text">About Doctors</div>
-        <a href="http://localhost/MedicFamilie/services/medici.php" target="_blank"></a>
+        <a href="http://localhost/MedicFamilie/services/medici.php"></a>
     </div>
     <div id="box3" class="services-container images">
         <div class="number">3</div>
         <div class="text">About Patients</div>
-        <a href="#"></a>
+        <a href="http://localhost/MedicFamilie/services/pacienti.php"></a>
     </div>
     <div id="box4" class="services-container images">
         <div class="number">4</div>
-        <div class="text">Diseases</div>
-        <a href="#"></a>
+        <div class="text">Prescriptions</div>
+        <a href="http://localhost/MedicFamilie/services/prescrieri.php"></a>
     </div>
 
 </div>
-
+<?php
+include "footer/footer.php";
+?>
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="http://localhost/MedicFamilie/script_index.js"></script>

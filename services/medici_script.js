@@ -31,7 +31,17 @@ function ajax(){
 
             // after finish creating html structure, append the output
             // into the table
-            $('#myTable').append(output);
+            if (!output){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Nu a fost gasit nimic',
+                })
+            }else {
+                $("#myTable").find("tr:gt(0)").remove();
+                $('#myTable').append(output);
+            }
+
         }
     });
 }
@@ -42,7 +52,6 @@ $('#dateButton').click(function (e){
         Swal.fire('Necesar de selectat filtrele')
     }
     else {
-        $("#myTable").find("tr:gt(0)").remove();
         ajax();
         $("#gradTable").hide();
         $("#myTable").show();
@@ -56,7 +65,6 @@ $('#gradButton').click(function (e){
         Swal.fire('Necesar de selectat filtrele')
     }
     else {
-        $("#gradTable").find("tr:gt(0)").remove();
         let grad = $('input[name="grad"]').val();
         $.ajax({
             url: 'mediciPHP.php',
@@ -83,9 +91,19 @@ $('#gradButton').click(function (e){
 
                 // after finish creating html structure, append the output
                 // into the table
-                $("#myTable").hide();
-                $('#gradTable').show();
-                $('#gradTable').append(output);
+                if (!output){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Nu a fost gasit nimic',
+                    })
+                }else
+                {
+                    $("#gradTable").find("tr:gt(0)").remove();
+                    $("#myTable").hide();
+                    $('#gradTable').show();
+                    $('#gradTable').append(output);
+                }
             }
         });
     }
@@ -97,7 +115,6 @@ $('#gardaButton').click(function (e){
         Swal.fire('Necesar de selectat filtrele')
     }
     else {
-        $("#ziuaGarda").find("tr:gt(0)").remove();
         let ziuaGarda = $('input[name="ziuaGarda"]').val();
         $.ajax({
             url: 'mediciPHP.php',
@@ -124,10 +141,21 @@ $('#gardaButton').click(function (e){
 
                 // after finish creating html structure, append the output
                 // into the table
-                $("#myTable").hide();
-                $("#gradTable").hide();
-                $('#ziuaGarda').show();
-                $('#ziuaGarda').append(output);
+                if (!output){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Nu a fost gasit nimic',
+                    })
+                }
+                else {
+                    $("#ziuaGarda").find("tr:gt(0)").remove();
+                    $("#myTable").hide();
+                    $("#gradTable").hide();
+                    $('#ziuaGarda').show();
+                    $('#ziuaGarda').append(output);
+                }
+
             }
         });
     }

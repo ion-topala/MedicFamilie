@@ -37,18 +37,20 @@ th{
     padding: 10px;
     top: 100px;
     left: 30px;
+    font-size: 15px;
     /*border: 2px solid #008285 ;*/
 }
 .hide {
     display: none;
 }
-#optionsSelect, #polita, #selectPrescrieri{
+#optionsSelect, #polita, #selectPrescrieri, #selectTr,#cars{
     width: 250px;
     height: 45px;
     font-size: 15px;
     background-color: #00a2a4;
     color: #FFFFFF;
 }
+
 select option:checked{
     background-color: #00a2a4;
 }
@@ -144,8 +146,8 @@ select option:hover {
 
 .center{
     margin-top: 200px !important;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 37%;
+    margin-right: 27%;
     display: none;
     color: #f7226a;
 }
@@ -155,4 +157,18 @@ select option:hover {
 
 #investigatiiPrescrise{
     display: none;
+}
+#prescrieInvestBox{
+    display: none;
+}
+.swal2-input{
+    width: 280px !important;
+}
+caption{
+    caption-side: initial !important;
+    text-align: center !important;
+}
+
+footer{
+    margin-top: 200px !important;
 }

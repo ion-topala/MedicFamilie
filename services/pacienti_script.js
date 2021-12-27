@@ -75,6 +75,10 @@ $('#vaccinButton').click(function (e){
                     })
                 }else
                 {
+                    $('html, body').animate({
+                        scrollTop: $(".footer-07").offset().top
+                    }, 1000);
+
                     $("#vaccinTable").find("tr:gt(0)").remove();
                     $('#vaccinTable').append(output);
                     $('#vaccinTable').show();

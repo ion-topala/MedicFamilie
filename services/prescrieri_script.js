@@ -71,6 +71,7 @@ $("#selectPrescrieri").change(function (){
         $("#medicamentePrescrise").hide();
         $("#autocompleteBox2").hide();
         $("#investigatiiPrescrise").show();
+        $("#prescrieInvestBox").show();
         var d = JSONObj.investigatiiCard;
         var output;
         $.each(d, function (i, e) {
@@ -94,7 +95,7 @@ $("#selectPrescrieri").change(function (){
         $("#investigatiiPrescrise").hide();
         $("#medicamentePrescrise").show();
         $("#autocompleteBox2").show();
-
+        $("#prescrieInvestBox").hide();
         var d = JSONObj.medicamentePrescrise;
         var output;
         $.each(d, function (i, e) {
@@ -118,6 +119,7 @@ $("#selectPrescrieri").change(function (){
         $("#medicamentePrescrise").hide();
         $("#autocompleteBox2").hide();
         $("#investigatiiPrescrise").show();
+        $("#prescrieInvestBox").show();
         var d = JSONObj.investigatiiOftal;
         var output;
         $.each(d, function (i, e) {
@@ -141,6 +143,7 @@ $("#selectPrescrieri").change(function (){
         $("#medicamentePrescrise").hide();
         $("#autocompleteBox2").hide();
         $("#investigatiiPrescrise").show();
+        $("#prescrieInvestBox").show();
         var d = JSONObj.investigatiiGen;
         var output;
         $.each(d, function (i, e) {
@@ -164,6 +167,7 @@ $("#selectPrescrieri").change(function (){
         $("#medicamentePrescrise").hide();
         $("#autocompleteBox2").hide();
         $("#investigatiiPrescrise").show();
+        $("#prescrieInvestBox").show();
         var d = JSONObj.testeDiagn;
         var output;
         $.each(d, function (i, e) {
@@ -199,7 +203,7 @@ $("#prescrieButton").click(function (e){
             const login = Swal.getPopup().querySelector('#login').value
             const password = Swal.getPopup().querySelector('#password').value
             const medic = Swal.getPopup().querySelector('#medic').value
-            if (!login || !password) {
+            if (!login || !password|| !medic) {
                 Swal.showValidationMessage(`Introduceti datele`)
             }
             return { login: login, password: password, medic: medic }
@@ -220,6 +224,61 @@ $("#prescrieButton").click(function (e){
             success: function(data){
                 if (data.status && typeof data.status === "boolean"){
                     Swal.fire('TOT ok')
+                }
+            }
+        });
+
+    })
+});
+$("#prescrieInvestButton").click(function (e){
+    e.preventDefault();
+    Swal.fire({
+        title: 'Prescrierea unei investigatii ',
+        html: `<input type="text" id="login" class="swal2-input" placeholder="IDNP Pacient">
+  <input type="text" id="medic" class="swal2-input" placeholder="IDNP Medic">
+  <select class="swal2-input" id="selectInvest">
+    <option value="investigatii_ecard">Investigatii Ecardiologice</option>
+    <option value="investigatii_oftal">Investigatii Oftalmologice</option>
+    <option value="invsetigatii_gen">Investigatii Generale</option>
+    <option value="teste_diagn">Teste Diagnostice</option>
+</select>
+  <input type="text" id="password" class="swal2-input" placeholder="Investigare">`,
+        confirmButtonText: 'Adaugare',
+        focusConfirm: false,
+        preConfirm: () => {
+            const login = Swal.getPopup().querySelector('#login').value
+            const password = Swal.getPopup().querySelector('#password').value
+            const medic = Swal.getPopup().querySelector('#medic').value
+            const investigareTable = Swal.getPopup().querySelector('#selectInvest').value
+            if (!login || !password || !medic ||!investigareTable) {
+                Swal.showValidationMessage(`Introduceti datele`)
+            }
+            return { login: login, password: password, medic: medic, investigareTable: investigareTable }
+        }
+    }).then((result) => {
+        var a = result.value.login;
+        var b = result.value.password;
+        var c = result.value.medic;
+        var d = result.value.investigareTable;
+        $.ajax({
+            url: 'prescrieriPHP.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                pacientIDNP: a,
+                investDen: b,
+                medicIDNP: c,
+                investTable: d
+            },
+            success: function(data){
+                if (data.status && typeof data.status === "boolean"){
+                    Swal.fire('TOT ok')
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    })
                 }
             }
         });

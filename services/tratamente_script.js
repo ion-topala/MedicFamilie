@@ -92,7 +92,7 @@ $("#selectFiltru").change(function (){
     else{
         $("#labelProducator").show();
         $("#producator").show();
-        $("#producatorButton").show();
+        $("#producatorButton").css({"display": "block"});
         $("#labelSubstantaActiva").hide();
         $("#substantaActiva").hide();
         $("#substantaActivaButton").hide();

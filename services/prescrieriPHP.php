@@ -6,6 +6,12 @@ if(!isset($_SESSION))
 include ("../form/connection.php");
 include ("../form/functions.php");
 
+$array = array(
+    "investigatii_ecard" => "prescriere_invest_ecard",
+    "investigatii_oftal" => "prescriere_invest_ofta",
+    "invsetigatii_gen" => "prescriere_invest_gen",
+    "teste_diagn" => "prescriere_teste_diagn",
+);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['index']))
 {
@@ -122,6 +128,35 @@ elseif ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['pacientIDNP']) && 
     $medicamentID = $medicamentID[0][0];
 
     mysqli_query($con,"INSERT INTO prescriere_medicament (id_prescriere, medicament_id, medic_id, pacient_id) VALUES (NULL, '$medicamentID', '$medicId', '$pacientId');");
+
+    $response = [
+        "status" => true
+    ];
+    echo json_encode($response);
+    die;
+}
+elseif ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['pacientIDNP']) && isset($_POST['investDen']) && isset($_POST['medicIDNP']) && isset($_POST['investTable'])){
+    $pacientIDNP = $_POST['pacientIDNP'];
+    $investDen = $_POST['investDen'];
+    $medicIDNP = $_POST['medicIDNP'];
+    $investTable = $_POST['investTable'];
+
+    $pacientId = "SELECT DISTINCT id_pacient FROM lista_pacienti where IDNP_pacient ='$pacientIDNP';";
+    $result = mysqli_query($con, $pacientId);
+    $pacientId = mysqli_fetch_all($result);
+    $pacientId = $pacientId[0][0];
+
+    $medicId = "SELECT DISTINCT id_medic FROM lista_medici where IDNP_medic ='$medicIDNP';";
+    $result = mysqli_query($con, $medicId);
+    $medicId = mysqli_fetch_all($result);
+    $medicId = $medicId[0][0];
+
+    $investID = "SELECT DISTINCT id_invest FROM $investTable where den_serviciu ='$investDen';";
+    $result = mysqli_query($con, $investID);
+    $investID = mysqli_fetch_all($result);
+    $investID = $investID[0][0];
+
+    mysqli_query($con, "INSERT INTO $array[$investTable] (id_prescriere, invest_id, medic_id, pacient_id) VALUES (NULL, '$investID', '$medicId', '$pacientId');");
 
     $response = [
         "status" => true
