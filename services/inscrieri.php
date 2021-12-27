@@ -50,24 +50,23 @@ include "../navbar_gen.php";
         </tr>
 </table>
 
-<div style="position:absolute;">
-    <form id="appointment">
-        <p>Nume Pacient</p>
-        <select name="numeP" id="numeP">
-            <option value="">Select...</option>
-        </select>
-        <p>Nume Medic</p>
-        <select name="numeM" id="numeM">
-            <option value="">Select...</option>
-        </select>
-        <p>Ziua inscrierii</p>
-        <input type="datetime-local" id="meetingApp"
-               name="app-time" value=""
-               min="2020-12-01T00:00" max="2022-12-31T00:00">
-        <button type="submit" class="create" id="createApp">Submit</button>
-    </form>
+<div class="search-box-left" id="leftInscrieri">
+        <form id="appointment">
+            <p>Nume Pacient</p>
+            <select name="numeP" id="numeP">
+                <option value="">Select...</option>
+            </select>
+            <p>Nume Medic</p>
+            <select name="numeM" id="numeM">
+                <option value="">Select...</option>
+            </select>
+            <p>Ziua inscrierii</p>
+            <input type="datetime-local" id="meetingApp"
+                   name="app-time" value=""
+                   min="2020-12-01T00:00" max="2022-12-31T00:00">
+            <button type="submit" class="create" id="createApp">Submit</button>
+        </form>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>

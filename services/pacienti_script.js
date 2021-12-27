@@ -46,7 +46,6 @@ $('#vaccinButton').click(function (e){
         Swal.fire('Necesar de selectat filtrele')
     }
     else {
-        $("#vaccinTable").find("tr:gt(0)").remove();
         let denVaccin = $("#denVaccin").val();
         let dateSearch = "aaa";
         $.ajax({
@@ -68,8 +67,18 @@ $('#vaccinButton').click(function (e){
                         '<td>'+e[2]+'</td>' +
                         '</tr>';
                 });
-                $('#vaccinTable').append(output);
-                $('#vaccinTable').show();
+                if(!output){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Nu s-a gasit nimic',
+                    })
+                }else
+                {
+                    $("#vaccinTable").find("tr:gt(0)").remove();
+                    $('#vaccinTable').append(output);
+                    $('#vaccinTable').show();
+                }
             }
         });
     }

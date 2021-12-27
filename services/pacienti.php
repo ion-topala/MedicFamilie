@@ -22,6 +22,7 @@ include "../navbar_gen.php";
 ?>
 <div class="search-box" id="vaccinBox">
     <form id="myFormVaccin" >
+        <label>Cautarea pacientilor dupa vaccin</label>
         <select name="denVaccin" id="denVaccin">
             <option value="">Select...</option  >
         </select>
@@ -47,12 +48,13 @@ include "../navbar_gen.php";
     </tr>
 
 </table>
-<select id="polita" name="polita" form="polita">
-    <option value="all">Afisare toti pacienti</option>
-    <option value="true">Afisarea pacientilor cu polita</option>
-    <option value="false">Afisarea pacientilor fara polita</option>
-</select>
-<br>
+<div class="search-box-left">
+    <select id="polita" name="polita" form="polita">
+        <option value="all">Afisare toti pacienti</option>
+        <option value="true">Afisarea pacientilor cu polita</option>
+        <option value="false">Afisarea pacientilor fara polita</option>
+    </select>
+</div>
 
 <table id="vaccinTable">
     <caption><h3>Cautarea pacientilor dupa vaccin</h3><br></caption>

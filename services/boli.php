@@ -21,7 +21,9 @@ if(!isset($_SESSION))
 <?php
 include "../navbar_gen.php";
 ?>
-
+<div class="center">
+    <h1>Introduceti filtrele</h1>
+</div>
 <div class="search-box" id="boliBox">
     <form id="boliForm">
         <p>Lista bolilor</p>
@@ -51,6 +53,8 @@ include "../navbar_gen.php";
         </select>
         <button type="submit" class="create" id="pacientiBolnaviButton">Submit</button>
     </form>
+    <p>Inserare in tabel</p>
+    <button type="submit" class="create" id="newColumnBolnavi">Submit</button>
 </div>
 <div class="search-box" id="autocompleteBox">
 <!--    Make sure the form has the autocomplete function switched off:-->
@@ -61,6 +65,8 @@ include "../navbar_gen.php";
         </div>
         <button type="submit" class="create" id="istorieMedButton">Submit</button>
     </form>
+    <p>Inserare in tabel</p>
+    <button type="submit" class="create" id="newColumnIstorie">Submit</button>
 </div>
 
 <table id="myTable">
@@ -88,15 +94,13 @@ include "../navbar_gen.php";
     <tr>
 </table>
 
-
-<select name="optionsSelect" id="optionsSelect">
-    <option value="listaBoli">Afisarea listei bolilor</option>
-    <option value="pacientiBoli">Afisarea pacientilor bolnavi</option>
-    <option value="istoriaPacient">Istoria medicala per pacient</option>
-</select>
-
-
-
+<div class="search-box-left">
+    <select name="optionsSelect" id="optionsSelect">
+        <option value="listaBoli">Afisarea listei bolilor</option>
+        <option value="pacientiBoli">Afisarea pacientilor bolnavi</option>
+        <option value="istoriaPacient">Istoria medicala per pacient</option>
+    </select>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="http://localhost/MedicFamilie/script_index.js"></script>

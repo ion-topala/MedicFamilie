@@ -66,23 +66,113 @@ $("#optionsSelect").change(function (){
        $("#boliBox").show();
        $("#autocompleteBox").hide();
        $("#istoriaMedicalaTable").hide();
+       $(".center").hide();
     }
 
     else if ($(this).val()==="pacientiBoli"){
         $("#myTable").hide();
-        $("#pacientiBolnavi").show();
         $("#pacientiBolnaviBox").show();
         $("#boliBox").hide();
         $("#autocompleteBox").hide();
+        $("#istoriaMedicalaTable").hide();
+        $("#pacientiBolnavi").hide();
+        $(".center").show();
     }
         else if($(this).val()==="istoriaPacient"){
         $("#myTable").hide();
         $("#pacientiBolnavi").hide();
         $("#pacientiBolnaviBox").hide();
         $("#boliBox").hide();
-        $("#istoriaMedicalaTable").show();
         $("#autocompleteBox").show();
+        $("#istoriaMedicalaTable").hide();
+        $(".center").show();
     }
+        else if (($(this).val()==="addPacient")){
+
+    }
+});
+$("#newColumnBolnavi").click(function (e){
+    e.preventDefault();
+    Swal.fire({
+        title: 'Adaugarea unei boli unui pacient',
+        html: `<input type="text" id="login" class="swal2-input" placeholder="IDNP">
+  <select class="swal2-input" id="swalSelect">
+             <option value="afectiuni_sezon">Boli de sezon</option>
+            <option value="boli_cronice">Boli cronice</option>
+            <option value="boli_genetice">Boli genetice</option>
+            <option value="boli_infectioase">Boli infectioase</option>
+            <option value="lista_restboli">Alte boli</option>
+    </select>
+  <input type="text" id="password" class="swal2-input" placeholder="Boala">`,
+        confirmButtonText: 'Submit',
+        focusConfirm: false,
+        preConfirm: () => {
+            const login = Swal.getPopup().querySelector('#login').value
+            const password = Swal.getPopup().querySelector('#password').value
+            const swalSelect =  Swal.getPopup().querySelector('#swalSelect').value
+            if (!login || !password) {
+                Swal.showValidationMessage(`Introduceti datele`)
+            }
+            return { login: login, password: password, swalSelect:swalSelect }
+        }
+    }).then((result) => {
+        var a = result.value.login;
+        var b = result.value.password;
+        var c = result.value.swalSelect;
+        $.ajax({
+            url: 'boliPHP.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                pacientIDNP: a,
+                boalaPacient: b,
+                tabelul: c
+            },
+            success: function(data){
+                if (data.status && typeof data.status === "boolean"){
+                    Swal.fire('S-a inserat tot')
+                }
+            }
+        });
+
+    })
+});
+
+$("#newColumnIstorie").click(function (e){
+    e.preventDefault();
+    Swal.fire({
+        title: 'Inserarea in tabelul istorie medicala',
+        html: `<input type="text" id="login" class="swal2-input" placeholder="IDNP">
+  <input type="text" id="password" class="swal2-input" placeholder="Boala">`,
+        confirmButtonText: 'Adaugare',
+        focusConfirm: false,
+        preConfirm: () => {
+            const login = Swal.getPopup().querySelector('#login').value
+            const password = Swal.getPopup().querySelector('#password').value
+            if (!login || !password) {
+                Swal.showValidationMessage(`Introduceti datele`)
+            }
+            return { login: login, password: password }
+        }
+    }).then((result) => {
+        var a = result.value.login;
+        var b = result.value.password;
+        $.ajax({
+            url: 'boliPHP.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                IDNP: a,
+                boala: b
+            },
+            success: function(data){
+                if (data.status && typeof data.status === "boolean"){
+                    Swal.fire('TOT ok')
+                }
+            }
+        });
+
+    })
 });
 
 $("#pacientiB").change(function (){
@@ -116,6 +206,8 @@ $('#pacientiBolnaviButton').click(function (e){
         Swal.fire('Necesar de selectat filtrele')
     }
     else {
+        $("#pacientiBolnavi").show();
+        $(".center").hide();
         $.ajax({
             url: 'boliPHP.php',
             type: 'POST',
@@ -155,6 +247,8 @@ $('#istorieMedButton').click(function (e){
         Swal.fire('Necesar de introdus IDNP')
     }
     else {
+        $("#istoriaMedicalaTable").show();
+        $(".center").hide();
         $.ajax({
             url: 'boliPHP.php',
             type: 'POST',

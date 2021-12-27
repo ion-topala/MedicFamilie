@@ -28,6 +28,8 @@ include "../navbar_gen.php";
         </div>
         <button type="submit" class="create" id="istorieMedButton">Submit</button>
     </form>
+    <p>Prescrie un medicament</p>
+    <button type="submit" class="create" id="prescrieButton">Submit</button>
 </div>
 
 <table id="medicamentePrescrise">
@@ -54,15 +56,15 @@ include "../navbar_gen.php";
     </tr>
 </table>
 
-
-<select id="selectPrescrieri">
-    <option value="prescriereMedicamente">Afisarea medicamentelor prescrise</option>
-    <option value="prescriereInvestigatiiCard">Investigatii Ecardiologice prescrise</option>
-    <option value="prescriereInvestigatiiOftal">Investigatii Oftalmologice prescrise</option>
-    <option value="prescriereInvestigatiiGen">Investigatii Generale prescrise</option>
-    <option value="prescrieretesteDiagn">Teste Diagnostice prescrise</option>
-</select>
-
+<div class="search-box-left">
+    <select id="selectPrescrieri">
+        <option value="prescriereMedicamente">Afisarea medicamentelor prescrise</option>
+        <option value="prescriereInvestigatiiCard">Investigatii Ecardiologice prescrise</option>
+        <option value="prescriereInvestigatiiOftal">Investigatii Oftalmologice prescrise</option>
+        <option value="prescriereInvestigatiiGen">Investigatii Generale prescrise</option>
+        <option value="prescrieretesteDiagn">Teste Diagnostice prescrise</option>
+    </select>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="http://localhost/MedicFamilie/script_index.js"></script>

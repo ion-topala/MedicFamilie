@@ -127,3 +127,53 @@ elseif ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['myInput'])){
     echo json_encode($response);
     die;
 }
+else if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['IDNP']) && isset($_POST['boala'])){
+    $IDNP = $_POST['IDNP'];
+    $boala = $_POST['boala'];
+
+    $pacientId = "SELECT DISTINCT id_pacient FROM lista_pacienti where IDNP_pacient ='$IDNP';";
+    $result = mysqli_query($con, $pacientId);
+    $pacientId = mysqli_fetch_all($result);
+    $pacientId = $pacientId[0][0];
+
+    mysqli_query($con, "INSERT INTO istorie_medicala (id_istorie, den_boala, pacient_id) VALUES (NULL, '$boala', '$pacientId');");
+    $response = [
+        "status" => true
+    ];
+    echo json_encode($response);
+    die;
+}
+
+else if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['pacientIDNP']) && isset($_POST['boalaPacient']) && isset($_POST['tabelul'])){
+    $IDNP = $_POST['pacientIDNP'];
+    $boala = $_POST['boalaPacient'];
+    $swalSelect = $_POST['tabelul'];
+
+    $pacientId = "SELECT DISTINCT id_pacient FROM lista_pacienti where IDNP_pacient ='$IDNP';";
+    $result = mysqli_query($con, $pacientId);
+    $pacientId = mysqli_fetch_all($result);
+    $pacientId = $pacientId[0][0];
+
+    $maxID = "SELECT MAX(id_boala) FROM $swalSelect WHERE 1;";
+    $result = mysqli_query($con, $maxID);
+    $maxID = mysqli_fetch_all($result);
+    $maxID = intval($maxID[0][0])  + 1;
+
+
+    mysqli_query($con, "INSERT INTO $swalSelect (id_boala, den_boala) VALUES ($maxID, '$boala');");
+    mysqli_query($con, "INSERT INTO $array[$swalSelect] (id_afectiune,boala_id,pacient_id	) VALUES (NULL,'$maxID','$pacientId')");
+
+    $response = [
+        "status" => true
+    ];
+    echo json_encode($response);
+    die;
+}
+else{
+    $response = [
+        "status" => false
+    ];
+    echo json_encode($response);
+    die;
+}
+

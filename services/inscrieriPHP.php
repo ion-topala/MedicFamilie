@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['index']))
     while ($row2 = mysqli_fetch_array($res)){
         $options2 = $options2."<option value=\"$row2[0]\">$row2[1] $row2[2]</option>";
     }
-    $resultInscrieri = mysqli_query($con, "SELECT DISTINCT nume_pacient, prenume_pacient, IDNP_pacient, nume_medic, prenume_medic, timpul_inscrierii
+    $resultInscrieri = mysqli_query($con, "SELECT id_inscriere, nume_pacient, prenume_pacient, IDNP_pacient, nume_medic, prenume_medic, timpul_inscrierii
             FROM inscriere
             INNER JOIN lista_pacienti
                 ON pacient_id = id_pacient

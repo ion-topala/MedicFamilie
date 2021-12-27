@@ -70,13 +70,15 @@ include "../navbar_gen.php";
         <th>Ziua</th>
     </tr>
 </table>
-<label for="forms">Cautare dupa</label>
-<select id="cars" name="forms" form="forms">
-    <option value="date">Dupa data nasterii</option>
-    <option value="grad">Dupa grad profesional</option>
-    <option value="ziuaGarda">Ziua de garda</option>
-</select>
-<script src="http://localhost/MedicFamilie/script_index.js"></script>
+<div class="search-box-left">
+    <label for="forms">Cautare dupa</label>
+    <select id="cars" name="forms" form="forms">
+        <option value="date">Dupa data nasterii</option>
+        <option value="grad">Dupa grad profesional</option>
+        <option value="ziuaGarda">Ziua de garda</option>
+    </select>
+</div>
+    <script src="http://localhost/MedicFamilie/script_index.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="medici_script.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

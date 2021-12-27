@@ -186,6 +186,47 @@ $("#selectPrescrieri").change(function (){
 });
 
 
+$("#prescrieButton").click(function (e){
+    e.preventDefault();
+    Swal.fire({
+        title: 'Prescrierea unui medicament ',
+        html: `<input type="text" id="login" class="swal2-input" placeholder="IDNP Pacient">
+  <input type="text" id="medic" class="swal2-input" placeholder="IDNP Medic">
+  <input type="text" id="password" class="swal2-input" placeholder="Medicanent">`,
+        confirmButtonText: 'Adaugare',
+        focusConfirm: false,
+        preConfirm: () => {
+            const login = Swal.getPopup().querySelector('#login').value
+            const password = Swal.getPopup().querySelector('#password').value
+            const medic = Swal.getPopup().querySelector('#medic').value
+            if (!login || !password) {
+                Swal.showValidationMessage(`Introduceti datele`)
+            }
+            return { login: login, password: password, medic: medic }
+        }
+    }).then((result) => {
+        var a = result.value.login;
+        var b = result.value.password;
+        var c = result.value.medic;
+        $.ajax({
+            url: 'prescrieriPHP.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                pacientIDNP: a,
+                medicamentDen: b,
+                medicIDNP: c
+            },
+            success: function(data){
+                if (data.status && typeof data.status === "boolean"){
+                    Swal.fire('TOT ok')
+                }
+            }
+        });
+
+    })
+});
+
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
