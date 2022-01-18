@@ -2,7 +2,7 @@
 
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass= "Google73T!";
+$dbpass= "";
 $dbname = "medic_familie";
 
 if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
